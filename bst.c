@@ -93,7 +93,7 @@ struct Node *Find_Node_by_ID(struct Node **root, int key_id)
 struct Node *Remove_Node(struct Node **root, int key_id)
 {
     struct Node *start_node = NULL;
-    start_node = Find_Node_by_ID(key_id);
+    start_node = Find_Node_by_ID(&(*root), key_id);
 
 
 
