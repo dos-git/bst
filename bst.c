@@ -44,7 +44,7 @@ void Return_Node(struct Node **root, int comparision_state, int new_key_val){
         if ((*root)->right_branch == NULL){   // enter new node
             (*root)->right_branch = Create_Element(new_key_val);
         }
-        else {
+        else{
             comparision_state = Compare_Keys((*root)->right_branch, new_key_val);
             if (comparision_state != 0){
                 Return_Node(&(*root)->right_branch, comparision_state, new_key_val);
@@ -72,5 +72,32 @@ int Insert_Element(struct Node **root, int id_value)
             return 0;
         }
     }
+}
+
+int Check_Branches_for_Nodes(struct Node *root)
+{
+    if ((root->left_branch == NULL) && (root->right_branch ==NULL)) return 0;
+    else if (root->left_branch != NULL) return -1;
+    else return 1;
+}
+
+struct Node *Find_Node_by_ID(struct Node **root, int key_id)
+{
+    int state = 0;
+    state = Compare_Keys((*root), key_id);
+    if (state == -1) return Find_Node_by_ID(&(*root)->left_branch, key_id);
+    else if (state == 1) return Find_Node_by_ID(&(*root)->right_branch, key_id);
+    else return (*root);
+}
+
+struct Node *Remove_Node(struct Node **root, int key_id)
+{
+    struct Node *start_node = NULL;
+    start_node = Find_Node_by_ID(key_id);
+
+
 
 }
+
+
+
