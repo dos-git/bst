@@ -8,7 +8,7 @@ struct Node
     struct Node *right_branch;
 };
 
-void Insert_Element(struct Node **, int id_value);
+int Insert_Element(struct Node **, int id_value);
 struct Node *Create_Element(int value);
 
 
