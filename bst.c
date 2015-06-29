@@ -144,6 +144,12 @@ struct Node *RR(struct Node **root, int remove_id){
 
             //tmp->left_branch = NULL;
             //tmp->right_branch = NULL;
+
+            //if((*root)->parent->right_branch == NULL) tmp->left_branch = NULL;
+            //else tmp->right_branch = NULL;
+            if ((*root) == NULL) printf("EMPTYYYYYYYYYYYYY\n");
+            else free((*root));
+            (*root) = NULL;
             if(tmp->right_branch != NULL && tmp->left_branch != NULL) {
                 printf("NULLER NOT BOTH\n");
                 tmp->left_branch = NULL;
@@ -154,10 +160,7 @@ struct Node *RR(struct Node **root, int remove_id){
             else {tmp->left_branch = NULL;
                 printf("NULLER NOT LEFT\n");
             }
-            //if((*root)->parent->right_branch == NULL) tmp->left_branch = NULL;
-            //else tmp->right_branch = NULL;
-            free((*root));
-            (*root) = NULL;
+
             printf("BRANCH TMP NODE  %p LEFT  %p  RIGHT  %p\n", tmp, tmp->left_branch, tmp->right_branch);
             //if(tmp->right_branch != NULL) tmp->right_branch = NULL;
             //if(tmp->left_branch != NULL)  tmp->left_branch = NULL;
