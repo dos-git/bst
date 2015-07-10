@@ -9,8 +9,9 @@ struct Node
     struct Node *parent;
 };
 
-int Insert_Element(struct Node **, int id_value);
+void Insert_Element(struct Node **, int id_value);
 struct Node *Create_Element(int value);
+struct Node *Reverse_Removing(struct Node **root);
 
 
 #endif
