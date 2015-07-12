@@ -18,6 +18,10 @@ struct Node *Create_Element(int value)
 int Compare_Keys(struct Node *element, int id_value)
 {
     printf("Comparing %d : %d\n", element->key_value, id_value);
+    if (element == NULL){
+        puts("NULLLLLLLLLLLLL!\n");
+        return -2;
+    }
     if (element->key_value == id_value) return 0;
     else if (element->key_value > id_value)return -1;
     else return 1;
@@ -94,23 +98,95 @@ struct Node *Find_Node_by_ID(struct Node **root, int key_id)
     printf("Finding...\n");
     int state = 0;
     state = Compare_Keys((*root), key_id);
-    if (state == -1) return Find_Node_by_ID(&(*root)->left_branch, key_id);
+    printf("STATE %d\n", state);
+    if(state == -2) return NULL;
+    else if (state == -1) return Find_Node_by_ID(&(*root)->left_branch, key_id);
     else if (state == 1) return Find_Node_by_ID(&(*root)->right_branch, key_id);
     else return (*root);
 }
 
 
-struct Node *Remove_Node(struct Node **root, int key_id)
+/*
+
+0 - removed
+1 - tree does not have nodes
+*/
+int Remove_Node(struct Node **root, int key_id)
 {
-    struct Node *start_node = NULL;
+    struct Node *start_node = NULL, *child = NULL, *root_right = NULL, *last_right = NULL;
     start_node = Find_Node_by_ID(&(*root), key_id);
+
+    /* tree is empty */
+    if (start_node == NULL){
+        return 1;
+    }
+
+    /* remove first node */
+    if (start_node->parent == NULL){
+        printf("Removing root node...\n");
+
+        root_right = start_node->right_branch;
+        child = start_node->left_branch;
+        child->parent = NULL;
+        last_right = Get_Last_Right_Node(&child);
+
+        printf("LAST RIGHT VALUE      %d\n", last_right->key_value);
+        printf("LAST RIGHT BRANCH      %p\n", last_right->right_branch);
+        printf("ROOT_RIGHT       %p\n", root_right);
+
+        last_right->right_branch = root_right;
+        root_right->parent = last_right;
+        //last_right->right_branch = root_right;
+        (*root)->left_branch = NULL;
+        (*root)->right_branch = NULL;
+        free((*root));
+        printf("Child valueeeee   %d\n", child->right_branch->right_branch->key_value);
+        printf("Child valueeeee   %d\n", child->right_branch->right_branch->right_branch->key_value);
+        (*root) = child;
+
+        //Reverse_Removing(&child);
+
+        return 0;
+    }
+
+    if (start_node->left_branch != NULL){
+        child =  start_node->left_branch;
+        start_node->parent->left_branch = child;
+        child->parent = start_node->parent;
+        start_node->parent = NULL;
+
+        printf("RIGHT %d\n", start_node->right_branch->parent->key_value);
+        start_node->right_branch->parent=NULL;
+        printf("RIGHT %p\n", start_node->right_branch->parent);
+        printf("RIGHT %d\n", start_node->right_branch->key_value);
+
+        //Reverse_Removing(&start_node->right_branch);
+
+        free(start_node);
+
+        //Reverse_Removing(&child);
+        return 0;
+    }else{
+        printf("Child is nULLL!\n");
+        if(start_node->right_branch != NULL){
+            // check if parent left is not null, if is take a right one
+            child = start_node->right_branch;
+            start_node->parent->left_branch = child;
+            child->parent = start_node->parent;
+            start_node->parent = NULL;
+            free(start_node);
+            return 0;
+        }
+    }
+
+
 /*
     if (start_node->parent->left_branch->key_value == key_id)
         start_node->parent->left_branch == NULL;
     else
         start_node->parent->right_branch == NULL;
 */
-    start_node->parent = NULL;
+    //start_node->parent = NULL;
 }
 
 
@@ -126,6 +202,7 @@ struct Node *Reverse_Removing(struct Node **root){
     /* main root taken for removal should have all pointers equal NULL */
     if ( ((*root)->parent == NULL)  &&  ((*root)->left_branch == NULL) && ((*root)->right_branch == NULL) ) {
         printf("\nRemove that bitch   %p\n", (*root));
+        printf("FREE %d\n", (*root)->key_value);
         free((*root));
         (*root) = NULL;
         return NULL;
@@ -137,6 +214,7 @@ struct Node *Reverse_Removing(struct Node **root){
             printf("RIGHT NULL\n");
             tmp = (*root)->parent;
             //(*root)->parent = NULL;
+            printf("FREE %d\n", (*root)->key_value);
             free((*root));
 
             /* recursive algorithm recuires setting to NULL a branch's pointer that has
@@ -157,7 +235,15 @@ struct Node *Reverse_Removing(struct Node **root){
     }
 }
 
-
+/*
+#Get_Last_Right_Node - returns the last node localized on the right branch
+                        of a given tree's node.
+*/
+struct Node *Get_Last_Right_Node(struct Node **root){
+    printf("get last... %d\n", (*root)->key_value);
+    if((*root)->right_branch != NULL) return Get_Last_Right_Node(&(*root)->right_branch);
+    else return (*root);
+}
 
 void PP(struct Node **node)
 {
@@ -190,3 +276,4 @@ void PRINT_ROOT_AND_PARENT(struct Node **root){
         }
     }
 }
+
