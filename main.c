@@ -13,9 +13,25 @@ int main()
     Insert_Element(&root,16);
     Insert_Element(&root,19);
     Insert_Element(&root,18);
+
+    Remove_Node(&root, 20);
+    Reverse_Removing(&root);
+
+
+
+    /*
+    Insert_Element(&root,20);
+    Insert_Element(&root,15);
+
+    Insert_Element(&root,17);
+    Insert_Element(&root,16);
+    Insert_Element(&root,19);
+    Insert_Element(&root,18);
     Insert_Element(&root,21);
     Remove_Node(&root, 20);
     Reverse_Removing(&root);
+    */
+
     /*
     Insert_Element(&root,20);
     Insert_Element(&root,15);

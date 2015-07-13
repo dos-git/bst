@@ -123,30 +123,39 @@ int Remove_Node(struct Node **root, int key_id)
 
     /* remove first node */
     if (start_node->parent == NULL){
-        printf("Removing root node...\n");
+        if ((*root)->right_branch != NULL){
+            printf("Removing root node...\n");
 
-        root_right = start_node->right_branch;
-        child = start_node->left_branch;
-        child->parent = NULL;
-        last_right = Get_Last_Right_Node(&child);
+            root_right = start_node->right_branch;
+            child = start_node->left_branch;
+            child->parent = NULL;
+            last_right = Get_Last_Right_Node(&child);
 
-        printf("LAST RIGHT VALUE      %d\n", last_right->key_value);
-        printf("LAST RIGHT BRANCH      %p\n", last_right->right_branch);
-        printf("ROOT_RIGHT       %p\n", root_right);
+            printf("LAST RIGHT VALUE      %d\n", last_right->key_value);
+            printf("LAST RIGHT BRANCH      %p\n", last_right->right_branch);
+            printf("ROOT_RIGHT       %p\n", root_right);
 
-        last_right->right_branch = root_right;
-        root_right->parent = last_right;
-        //last_right->right_branch = root_right;
-        (*root)->left_branch = NULL;
-        (*root)->right_branch = NULL;
-        free((*root));
-        printf("Child valueeeee   %d\n", child->right_branch->right_branch->key_value);
-        printf("Child valueeeee   %d\n", child->right_branch->right_branch->right_branch->key_value);
-        (*root) = child;
+            last_right->right_branch = root_right;
+            root_right->parent = last_right;
+            //last_right->right_branch = root_right;
+            (*root)->left_branch = NULL;
+            (*root)->right_branch = NULL;
+            free((*root));
+            printf("Child valueeeee   %d\n", child->right_branch->right_branch->key_value);
+            printf("Child valueeeee   %d\n", child->right_branch->right_branch->right_branch->key_value);
+            (*root) = child;
 
-        //Reverse_Removing(&child);
+            //Reverse_Removing(&child);
 
-        return 0;
+            return 0;
+        }else{
+            child = start_node->left_branch;
+            child->parent = NULL;
+            (*root)->left_branch = NULL;
+            (*root)->right_branch = NULL;
+            free((*root));
+            (*root) = child;
+        }
     }
 
     if (start_node->left_branch != NULL){
