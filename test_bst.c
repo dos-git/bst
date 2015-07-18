@@ -3,6 +3,7 @@
 #include <string.h>
 #include "CUnit/Basic.h"
 #include "bst.h"
+#include "bst.c"
 
 /*
 #init_suit - the suite initialization function.
@@ -20,6 +21,53 @@ int init_suite(void)  { return 0; }
                Returns zero on success, non-zero otherwise.
 */
 int clean_suite(void) { return 0; }
+
+/* ****************************************
+                10
+              /    \
+            7        18
+          /   \    /    \
+         5     8  17     19
+       /   \   \           \
+      3     6   9           21
+                           /
+                          20
+****************************************** */
+void test_Remove_Node_1(){
+    struct Node *root = NULL;
+    printf("\nSTARTTTTttttttttttttttTTTTTTTT \n%p\n", root);
+    Insert_Element(&root, 10);
+    Insert_Element(&root, 7);
+    Insert_Element(&root, 8);
+    Insert_Element(&root, 5);
+    Insert_Element(&root, 3);
+    Insert_Element(&root, 6);
+    Insert_Element(&root, 8);
+    Insert_Element(&root, 9);
+    Remove_Node(&root, 7);
+    Remove_Node(&root, 5);
+    //CU_ASSERT(root->left_branch->key_value == 5);
+    //CU_ASSERT(root->left_branch->left_branch->key_value == 3);
+    root = Reverse_Removing(&root);
+    //printf("\n\n\n%d\n\n\n", root->key_value);
+    printf("\n\n\n%p\n\n\n", root);
+    CU_ASSERT(root == NULL);
+
+}
+
+void test_Remove_Node_2(){
+    struct Node *root = NULL;
+    printf("\nSTART %p\n", root);
+    Insert_Element(&root, 10);
+    Insert_Element(&root, 7);
+    Remove_Node(&root, 7);
+    printf("\nMIDDLE %p\n", root);
+    Reverse_Removing(&root);
+    printf("\nEND  %p\n", root);
+
+
+
+}
 
 int Return_One(){ return 1; }
 int Return_Two(){ return 2; }
@@ -44,7 +92,9 @@ int main(){
 
     /* add tests to suite */
     if ((NULL == CU_add_test(pSuite, "test_Return_One", test_Return_One)) ||
-        (NULL == CU_add_test(pSuite, "test_Return_Two", test_Return_Two))
+        (NULL == CU_add_test(pSuite, "test_Return_Two", test_Return_Two)) ||
+        (NULL == CU_add_test(pSuite, "test_Remove_Node_2", test_Remove_Node_2))
+        //(NULL == CU_add_test(pSuite, "test_Remove_Node_1", test_Remove_Node_1))
     )
     {
         CU_cleanup_registry();

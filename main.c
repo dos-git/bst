@@ -5,7 +5,10 @@
 int main()
 {
     struct Node *root = NULL;
+    printf("\nStart HEAD address [%p] value [%p]\n", (void *)&root, root );
 
+    printf("BEEGGGIIIINNNNNNN %p\n", root);
+/*
     Insert_Element(&root,20);
     Insert_Element(&root,15);
 
@@ -13,11 +16,22 @@ int main()
     Insert_Element(&root,16);
     Insert_Element(&root,19);
     Insert_Element(&root,18);
+*/
 
-    Remove_Node(&root, 20);
-    Reverse_Removing(&root);
-
-
+    Insert_Element(&root, 10);
+    Insert_Element(&root, 7);
+    Insert_Element(&root, 8);
+    Insert_Element(&root, 5);
+    Insert_Element(&root, 3);
+    Insert_Element(&root, 6);
+    Insert_Element(&root, 8);
+    Insert_Element(&root, 9);
+  //  Remove_Node(&root, 10);
+    Remove_Node(&root, 7);
+    //Remove_Node(&root, 7);
+    Remove_Node(&root, 5);
+    root = Reverse_Removing(&root);
+    printf("ENNDDDD %p\n", root);
 
     /*
     Insert_Element(&root,20);
