@@ -22,6 +22,128 @@ int init_suite(void)  { return 0; }
 */
 int clean_suite(void) { return 0; }
 
+
+/* ****************************************
+                NIL
+              /    \
+            NIL    NIL
+****************************************** */
+void test_Empty_Tree_Removing_Elements(){
+
+   int res = 0;
+   struct Node *root = NULL;
+   root =  Reverse_Removing(&root);
+   CU_ASSERT(root == NULL);
+   res = Remove_Node(&root, 10);
+   CU_ASSERT(root == NULL);
+   CU_ASSERT(res == -1);
+}
+
+/* ****************************************
+                10
+              /    \
+            NIL    NIL
+****************************************** */
+void test_Tree_One_Node(){
+
+   int res = 0;
+   struct Node *root = NULL;
+   Insert_Element(&root, 10);
+   CU_ASSERT_NOT_EQUAL(root, NULL);
+   CU_ASSERT(root->key_value == 10);
+   CU_ASSERT(root->left_branch == NULL);
+   CU_ASSERT(root->right_branch == NULL);
+   res = Remove_Node(&root, 10);
+   CU_ASSERT(res == 0);
+   CU_ASSERT(root == NULL);
+
+   Insert_Element(&root, 10);
+   CU_ASSERT_NOT_EQUAL(root, NULL);
+   CU_ASSERT(root->key_value == 10);
+   CU_ASSERT(root->left_branch == NULL);
+   CU_ASSERT(root->right_branch == NULL);
+   root =  Reverse_Removing(&root);
+   CU_ASSERT(root == NULL);
+   CU_ASSERT(res == 0);
+
+   /* remove node that does not exist */
+   Insert_Element(&root, 10);
+   CU_ASSERT_NOT_EQUAL(root, NULL);
+   CU_ASSERT(root->key_value == 10);
+   CU_ASSERT(root->left_branch == NULL);
+   CU_ASSERT(root->right_branch == NULL);
+   res = Remove_Node(&root, 1);
+   CU_ASSERT(res == -1);
+   CU_ASSERT_NOT_EQUAL(root, NULL);
+
+   res = Remove_Node(&root, 10);
+   CU_ASSERT(res == 0);
+   CU_ASSERT(root == NULL);
+}
+
+/* ****************************************
+                10
+              /    \
+            7      NIL
+          /   \
+        NIL   NIL
+****************************************** */
+void test_LEFT_BRANCH_1(){
+
+    int res = 0;
+    struct Node *root = NULL;
+
+    Insert_Element(&root, 10);
+    CU_ASSERT_NOT_EQUAL(root, NULL);
+    CU_ASSERT(root->key_value == 10);
+    CU_ASSERT(root->left_branch == NULL);
+    CU_ASSERT(root->right_branch == NULL);
+
+    Insert_Element(&root, 7);
+    CU_ASSERT_NOT_EQUAL(root->left_branch, NULL);
+    CU_ASSERT(root->left_branch->key_value == 7);
+    CU_ASSERT(root->left_branch->left_branch == NULL);
+    CU_ASSERT(root->left_branch->right_branch == NULL);
+
+    res = Remove_Node(&root, 7);
+    CU_ASSERT(res == 0);
+    CU_ASSERT_NOT_EQUAL(root, NULL);
+    CU_ASSERT(root->left_branch == NULL);
+    CU_ASSERT(root->right_branch == NULL);
+
+    res = Remove_Node(&root, 10);
+    CU_ASSERT(res == 0);
+    CU_ASSERT(root == NULL);
+}
+
+/* ****************************************
+                10
+              /    \
+            NIL    22
+                  /   \
+                NIL   NIL
+****************************************** */
+void test_RIGHT_BRANCH_1(){
+
+    int res = 0;
+    struct Node *root = NULL;
+
+    Insert_Element(&root, 10);
+    CU_ASSERT_NOT_EQUAL(root, NULL);
+    CU_ASSERT(root->key_value == 10);
+    CU_ASSERT(root->left_branch == NULL);
+    CU_ASSERT(root->right_branch == NULL);
+
+    Insert_Element(&root, 22);
+    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
+    CU_ASSERT(root->right_branch->key_value == 22);
+    CU_ASSERT(root->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch == NULL);
+}
+
+//void test_Remove_Node_1(){
+
+
 /* ****************************************
                 10
               /    \
@@ -91,9 +213,12 @@ int main(){
     }
 
     /* add tests to suite */
-    if ((NULL == CU_add_test(pSuite, "test_Return_One", test_Return_One)) ||
-        (NULL == CU_add_test(pSuite, "test_Return_Two", test_Return_Two)) ||
-        (NULL == CU_add_test(pSuite, "test_Remove_Node_2", test_Remove_Node_2))
+    //if ((NULL == CU_add_test(pSuite, "test_Return_One", test_Return_One)) ||
+    //    (NULL == CU_add_test(pSuite, "test_Return_Two", test_Return_Two)) ||
+    if ((NULL == CU_add_test(pSuite, "test_Empty_Tree_Removing_Elements", test_Empty_Tree_Removing_Elements)) ||
+        (NULL == CU_add_test(pSuite, "test_Tree_One_Node", test_Tree_One_Node)) ||
+        (NULL == CU_add_test(pSuite, "test_LEFT_BRANCH_1", test_LEFT_BRANCH_1))
+//        (NULL == CU_add_test(pSuite, "test_Remove_Node_2", test_Remove_Node_2))
         //(NULL == CU_add_test(pSuite, "test_Remove_Node_1", test_Remove_Node_1))
     )
     {
