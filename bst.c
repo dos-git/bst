@@ -122,7 +122,7 @@ int Remove_Node(struct Node **root, int key_id)
     if ((*root) == NULL) return -1;
 
     printf("\t\t\t\t\tREMOVE NODE :  ");
-    struct Node *start_node = NULL, *child = NULL, *root_right = NULL, *root_left = NULL, *last_right = NULL;
+    struct Node *start_node = NULL, *child = NULL, *root_right = NULL, *root_left = NULL, *last_right = NULL, *last_left = NULL;
     start_node = Find_Node_by_ID(&(*root), key_id);
 
     /* element was not found on tree */
@@ -161,12 +161,13 @@ int Remove_Node(struct Node **root, int key_id)
                 (*root) = NULL;
                 return 0;
             }else{
-            child = start_node->left_branch;
-            child->parent = NULL;
-            (*root)->left_branch = NULL;
-            (*root)->right_branch = NULL;
-            free((*root));
-            (*root) = child;
+                /* right branch is null, left is not */
+                child = start_node->left_branch;
+                child->parent = NULL;
+                (*root)->left_branch = NULL;
+                (*root)->right_branch = NULL;
+                free((*root));
+                (*root) = child;
             return 0;
             }
         }
@@ -195,12 +196,21 @@ int Remove_Node(struct Node **root, int key_id)
         /* left branch is null */
         printf("Child is nULLL!\n");
         if(start_node->right_branch != NULL){
-            // check if parent left is not null, if is take a right one
+
+            root_left = start_node->right_branch;
             child = start_node->right_branch;
-            start_node->parent->left_branch = child;
             child->parent = start_node->parent;
+            start_node->parent->right_branch = child;
+            last_left = Get_Last_Left_Node(&child);
+            last_left->left_branch = root_left;
+            root_left->parent = last_left;
+
+            start_node->left_branch = NULL;
+            start_node->right_branch = NULL;
             start_node->parent = NULL;
+
             free(start_node);
+            start_node = NULL;
             return 0;
         }else{
             /* right branch is also null */
@@ -269,8 +279,19 @@ struct Node *Get_Last_Right_Node(struct Node **root){
     printf("get last... %d\n", (*root)->key_value);
 
     // check if root is not null
-
     if((*root)->right_branch != NULL) return Get_Last_Right_Node(&(*root)->right_branch);
+    else return (*root);
+}
+
+/*
+#Get_Last_Left_Node - returns the last node localized on the left branch
+                      of a given tree's node.
+*/
+struct Node *Get_Last_Left_Node(struct Node **root){
+    printf("get last... %d\n", (*root)->key_value);
+
+    // check if root is not null
+    if((*root)->left_branch != NULL) return Get_Last_Left_Node(&(*root)->left_branch);
     else return (*root);
 }
 
