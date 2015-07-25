@@ -21,15 +21,14 @@ int main()
     Insert_Element(&root, 10);
     Insert_Element(&root, 7);
     Insert_Element(&root, 8);
-    Insert_Element(&root, 5);
-    Insert_Element(&root, 3);
-    Insert_Element(&root, 6);
-    Insert_Element(&root, 8);
-    Insert_Element(&root, 9);
+    Insert_Element(&root, 15);
+    Insert_Element(&root, 13);
+    Insert_Element(&root, 11);
+    Insert_Element(&root, 14);
   //  Remove_Node(&root, 10);
-    Remove_Node(&root, 7);
     //Remove_Node(&root, 7);
-    Remove_Node(&root, 5);
+    //Remove_Node(&root, 7);
+    //Remove_Node(&root, 5);
     root = Reverse_Removing(&root);
     printf("ENNDDDD %p\n", root);
 
