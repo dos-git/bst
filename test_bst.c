@@ -1635,13 +1635,82 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
               /    \
             N       32
                   /    \
+                 24     44
+               /    \   / \
+              20    30 40  50
+             /  \  / \ / \ / \
+             N   N N N N N N N
+****************************************** */
+void test_RB_REMOVE_NODE_8(){
+printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
+    int res = 0;
+    struct Node *root = NULL;
+    Insert_Element(&root, 16);
+    CU_ASSERT_NOT_EQUAL(root, NULL);
+    CU_ASSERT(root->key_value == 16);
+    CU_ASSERT(root->left_branch == NULL);
+    CU_ASSERT(root->right_branch == NULL);
+
+    Insert_Element(&root, 32);
+    CU_ASSERT(root->right_branch->key_value == 32);
+    CU_ASSERT(root->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch == NULL);
+
+
+    Insert_Element(&root, 24);
+    CU_ASSERT(root->right_branch->left_branch->key_value == 24);
+    CU_ASSERT(root->right_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch == NULL);
+
+    Insert_Element(&root, 20);
+    CU_ASSERT(root->right_branch->left_branch->left_branch->key_value == 20);
+    CU_ASSERT(root->right_branch->left_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->left_branch->right_branch == NULL);
+
+    Insert_Element(&root, 30);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->key_value == 30);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->right_branch == NULL);
+
+    Insert_Element(&root, 44);
+    CU_ASSERT(root->right_branch->right_branch->key_value == 44);
+    CU_ASSERT(root->right_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->right_branch == NULL);
+
+    Insert_Element(&root, 40);
+    CU_ASSERT(root->right_branch->right_branch->left_branch->key_value == 40);
+    CU_ASSERT(root->right_branch->right_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->left_branch->right_branch == NULL);
+
+    Insert_Element(&root, 50);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->key_value == 50);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->right_branch == NULL);
+
+    res = Remove_Node(&root, 32);
+    CU_ASSERT(root->right_branch->key_value == 24);
+    CU_ASSERT(root->right_branch->left_branch != NULL);
+    CU_ASSERT(root->right_branch->right_branch != NULL);
+
+    root = Reverse_Removing(&root);
+    CU_ASSERT(root == NULL);
+
+    puts(end_mark);
+}
+
+/* ****************************************
+                16
+              /    \
+            N       32
+                  /    \
                  24     N
                /    \
               20    30
              /  \  /  \
              N   N N   N
 ****************************************** */
-void test_RB_REMOVE_NODE_8(){
+void test_RB_REMOVE_NODE_9(){
 printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     int res = 0;
@@ -1683,7 +1752,6 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     CU_ASSERT(root == NULL);
 
     puts(end_mark);
-
 }
 
 

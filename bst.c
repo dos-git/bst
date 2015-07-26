@@ -228,19 +228,36 @@ int Remove_Node(struct Node **root, int key_id)
             printf("RR: RIGHT != NULL\n");
             int val = start_node->key_value;
             rooot = start_node->left_branch;
+            printf("ROOOT %d\n", rooot->key_value);
             root_right = start_node->right_branch;
+            printf("ROOOT RIGHT %d\n", root_right->key_value);
+
             last_right = Get_Last_Right_Node(&rooot);
-            if(rooot->parent->left_branch->key_value = val){
+            printf("LASTTTT %d\n", last_right->key_value);
+           // printf(" %d\n", rooot->parent->left_branch->key_value);
+
+//            if(rooot->parent->parent->left_branch->key_value == val){             //add check for parent->parent != NULLL
+            if(rooot->parent->parent->left_branch->key_value == val){
                 printf("RR: ROOOT LEFT\n");
 
                 start_node->parent->left_branch = rooot;
+                printf("ROOOT PARENT %d\n", rooot->parent->key_value);
+                printf("START PARENT %d\n", start_node->parent->key_value);
                 rooot->parent = start_node->parent;
-                last_right->right_branch = start_node->right_branch;
-
-                start_node->right_branch->parent = last_right;
+                last_right->right_branch = root_right;
+                root_right->parent = last_right;
+                printf("START NODE %d\n", start_node->key_value);
                 free(start_node);
             }else{
                 printf("RR: ROOOT RIGHT\n");
+
+                start_node->parent->right_branch = rooot;
+                rooot->parent = start_node->parent;
+                last_right->right_branch = root_right;
+                root_right->parent = last_right;
+                printf("freed %d\n", start_node->key_value);
+                free(start_node);
+
             }
 
 
