@@ -128,6 +128,9 @@ int Remove_Node(struct Node **root, int key_id)
     /* element was not found on tree */
     if (start_node == NULL) return -1;
 
+    printf("\t\tBEG LEFT  : %p\n",start_node->left_branch );
+    printf("\t\tBEG RIGHT : %p\n",start_node->right_branch );
+
     /* remove first node */
     if (start_node->parent == NULL){
         printf("REMOVE: MAIN ROOT NODE\n");
@@ -176,6 +179,60 @@ int Remove_Node(struct Node **root, int key_id)
         }
     }
 
+    if (start_node->left_branch == NULL){
+        printf("RR: LEFT == NULL\n");
+        if(start_node->right_branch == NULL){
+            printf("RR: RIGHT == NULL\n");
+            if(start_node->parent->left_branch != NULL) start_node->parent->left_branch = NULL;
+            else start_node->parent->right_branch = NULL;
+            start_node->parent == NULL;
+            printf("RR: FREED %d\n", start_node->key_value);
+            free(start_node);
+        }else{
+            printf("RR: RIGHT != NULL\n");
+            root_right = start_node->right_branch;
+            if(start_node->parent->left_branch != NULL)
+                start_node->parent->left_branch = root_right;
+            else{
+                printf("HHHHHHHHHHHHHHHHHHHHHHHHH\n");  // TODO remove..........
+                start_node->parent->right_branch = root_right;
+                }
+            root_right->parent = start_node->parent;
+            start_node->parent = NULL;
+
+            printf("RR: FREED %d\n", start_node->key_value);
+            free(start_node);
+        }
+
+
+    }else{
+        printf("RR: LEFT != NULL\n");
+        if(start_node->right_branch == NULL){
+            printf("RR: RIGHT == NULL\n");
+            root_left = start_node->left_branch;
+            if(start_node->parent->left_branch != NULL){
+                printf("HHHHHHHHHHHHHHHHHHHHHHHHH  11111111111111\n");  // TODO remove..........
+                start_node->parent->left_branch = root_left;
+                }
+            else{
+                printf("HHHHHHHHHHHHHHHHHHHHHHHHH 222222222222222\n");  // TODO remove..........
+                start_node->parent->right_branch = root_left;
+                }
+                root_left->parent = start_node->parent;
+                start_node->parent = NULL;
+
+                printf("RR: FREED %d\n", start_node->key_value);
+                free(start_node);
+
+        }else {
+           printf("RR: RIGHT != NULL\n");
+
+
+        }
+    }
+
+
+/*
     if (start_node->left_branch != NULL){
         printf("REMOVE: L_B IS NOT NULL\n");
 
@@ -186,15 +243,19 @@ int Remove_Node(struct Node **root, int key_id)
         printf("REMOVE: CHILD  PARENT %d\n", child->parent->key_value);
         printf("REMOVE: STSRT_NODE PARENT %d\n", start_node->parent->key_value);
         start_node->parent->left_branch = child;
+        //start_node->parent->right_branch = child;
         printf("REMOVE: S_NODE PARENT LEFT %d\n", start_node->parent->left_branch->key_value);
         last_right = Get_Last_Right_Node(&child);
         printf("The LAST EXISTS!!!!!!!!!!!!!!\n");
         printf("REMOVE: LAST_RIGHT %d\n", last_right->key_value);
+
         if (root_right != NULL){
+        printf("REMOVE: ROOT_RIGHT %d\n", root_right->key_value);
             printf("REMOVE: INSIDE>>>>>>>>>>>>>>>>>\n");
             last_right->right_branch = root_right;
             root_right->parent = last_right;
-        }
+            root_right->left_branch = NULL;
+        }else  start_node->parent->right_branch = NULL;
 
 
         printf("REMOVE: pooooooooooo\n");
@@ -207,7 +268,9 @@ int Remove_Node(struct Node **root, int key_id)
 
         return 0;
     }else{
+ /*
         /* left branch is null */
+ /*
         printf("REMOVE: L_B IS NULL\n");
       //  printf("Child is nULLL!\n");
         if(start_node->right_branch != NULL){
@@ -247,6 +310,7 @@ int Remove_Node(struct Node **root, int key_id)
             return 0;
         }
     }
+*/
 }
 
 
