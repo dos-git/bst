@@ -5,6 +5,15 @@
 #include "bst.h"
 #include "bst.c"
 
+
+/* constant for pretty printing function's headers */
+
+char *lines_10 = "----------";
+char *lines_15 = "---------------";
+char *lines_20 = "--------------------";
+char *lines_25 = "-------------------------";
+char *end_mark = "-------------------------END-------------------------";
+
 /*
 #init_suit - the suite initialization function.
              Here we can do some stuff that help us durin a test, i.e try to
@@ -29,7 +38,9 @@ int clean_suite(void) { return 0; }
             NIL    NIL
 ****************************************** */
 void test_Empty_Tree_Removing_Elements(){
-    puts("\n--------------------test_Empty_Tree_Removing_Elements--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
+    //puts("\n--------------------test_Empty_Tree_Removing_Elements--------------------\n\n");
     int res = 0;
     struct Node *root = NULL;
     root =  Reverse_Removing(&root);
@@ -37,6 +48,8 @@ void test_Empty_Tree_Removing_Elements(){
     res = Remove_Node(&root, 10);
     CU_ASSERT(root == NULL);
     CU_ASSERT(res == -1);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -45,7 +58,8 @@ void test_Empty_Tree_Removing_Elements(){
             NIL    NIL
 ****************************************** */
 void test_Tree_One_Node(){
-    puts("\n--------------------test_Tree_One_Node--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     int res = 0;
     struct Node *root = NULL;
     Insert_Element(&root, 10);
@@ -79,6 +93,8 @@ void test_Tree_One_Node(){
     res = Remove_Node(&root, 10);
     CU_ASSERT(res == 0);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -89,7 +105,8 @@ void test_Tree_One_Node(){
         NIL   NIL
 ****************************************** */
 void test_LB_REVERSE_RMV_1(){
-    puts("\n--------------------test_LB_REVERSE_RMV_1--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     struct Node *root = NULL;
 
     Insert_Element(&root, 10);
@@ -106,6 +123,8 @@ void test_LB_REVERSE_RMV_1(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -118,7 +137,8 @@ void test_LB_REVERSE_RMV_1(){
     NIL   NIL
 ****************************************** */
 void test_LB_REVERSE_RMV_2(){
-    puts("\n--------------------test_LB_REVERSE_RMV_2--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     struct Node *root = NULL;
 
     Insert_Element(&root, 10);
@@ -140,8 +160,9 @@ void test_LB_REVERSE_RMV_2(){
     CU_ASSERT(root->left_branch->left_branch->right_branch == NULL);
 
     root = Reverse_Removing(&root);
-
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -156,7 +177,8 @@ void test_LB_REVERSE_RMV_2(){
    NIL NIL
 ****************************************** */
 void test_LB_REVERSE_RMV_3(){
-    puts("\n--------------------test_LB_REVERSE_RMV_3--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     struct Node *root = NULL;
 
     Insert_Element(&root, 10);
@@ -185,6 +207,8 @@ void test_LB_REVERSE_RMV_3(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -199,7 +223,8 @@ void test_LB_REVERSE_RMV_3(){
     N  N N  N
 ****************************************** */
 void test_LB_REVERSE_RMV_4(){
-    puts("\n--------------------test_LB_REVERSE_RMV_4--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     struct Node *root = NULL;
 
     Insert_Element(&root, 15);
@@ -234,6 +259,8 @@ void test_LB_REVERSE_RMV_4(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -248,7 +275,8 @@ void test_LB_REVERSE_RMV_4(){
     N  N N  N
 ****************************************** */
 void test_LB_REVERSE_RMV_5(){
-    puts("\n--------------------test_LB_REVERSE_RMV_5--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     struct Node *root = NULL;
 
     Insert_Element(&root, 15);
@@ -289,6 +317,8 @@ void test_LB_REVERSE_RMV_5(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -303,7 +333,8 @@ void test_LB_REVERSE_RMV_5(){
     N  N N  NN  N
 ****************************************** */
 void test_LB_REVERSE_RMV_6(){
-    puts("\n--------------------test_LB_REVERSE_RMV_6--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
     struct Node *root = NULL;
 
     Insert_Element(&root, 15);
@@ -350,6 +381,8 @@ void test_LB_REVERSE_RMV_6(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -364,7 +397,7 @@ void test_LB_REVERSE_RMV_6(){
     N  N N  NN  N
 ****************************************** */
 void test_LB_REVERSE_RMV_7(){
-    puts("\n--------------------test_LB_REVERSE_RMV_7--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -412,6 +445,8 @@ void test_LB_REVERSE_RMV_7(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -426,7 +461,7 @@ void test_LB_REVERSE_RMV_7(){
     N  N N  N    N   N
 ****************************************** */
 void test_LB_REVERSE_RMV_8(){
-    puts("\n--------------------test_LB_REVERSE_RMV_8--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -474,6 +509,8 @@ void test_LB_REVERSE_RMV_8(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -490,7 +527,7 @@ void test_LB_REVERSE_RMV_8(){
                    N    N
 ****************************************** */
 void test_LB_REVERSE_RMV_9(){
-    puts("\n--------------------test_LB_REVERSE_RMV_9--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -544,6 +581,8 @@ void test_LB_REVERSE_RMV_9(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 
@@ -555,7 +594,7 @@ void test_LB_REVERSE_RMV_9(){
                  N     N
 ****************************************** */
 void test_RB_REVERSE_RMV_1(){
-    puts("\n--------------------test_RB_REVERSE_RMV_1--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -573,6 +612,8 @@ void test_RB_REVERSE_RMV_1(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -585,7 +626,7 @@ void test_RB_REVERSE_RMV_1(){
                     N    N
 ****************************************** */
 void test_RB_REVERSE_RMV_2(){
-    puts("\n--------------------test_RB_REVERSE_RMV_2--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -609,6 +650,8 @@ void test_RB_REVERSE_RMV_2(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -623,7 +666,7 @@ void test_RB_REVERSE_RMV_2(){
                        N    N
 ****************************************** */
 void test_RB_REVERSE_RMV_3(){
-    puts("\n--------------------test_RB_REVERSE_RMV_3--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -653,6 +696,8 @@ void test_RB_REVERSE_RMV_3(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -667,7 +712,7 @@ void test_RB_REVERSE_RMV_3(){
                   N   N N   N
 ****************************************** */
 void test_RB_REVERSE_RMV_4(){
-    puts("\n--------------------test_RB_REVERSE_RMV_4--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -703,6 +748,8 @@ void test_RB_REVERSE_RMV_4(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -717,7 +764,7 @@ void test_RB_REVERSE_RMV_4(){
                     N   N N   N
 ****************************************** */
 void test_RB_REVERSE_RMV_5(){
-    puts("\n--------------------test_RB_REVERSE_RMV_5--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -760,6 +807,8 @@ void test_RB_REVERSE_RMV_5(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -774,7 +823,7 @@ void test_RB_REVERSE_RMV_5(){
              N   N  N  N N   N
 ****************************************** */
 void test_RB_REVERSE_RMV_6(){
-    puts("\n--------------------test_RB_REVERSE_RMV_6--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -822,6 +871,8 @@ void test_RB_REVERSE_RMV_6(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -836,7 +887,7 @@ void test_RB_REVERSE_RMV_6(){
                 N  N N  N N  N
 ****************************************** */
 void test_RB_REVERSE_RMV_7(){
-    puts("\n--------------------test_RB_REVERSE_RMV_7--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -884,6 +935,8 @@ void test_RB_REVERSE_RMV_7(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
 /* ****************************************
@@ -900,7 +953,7 @@ void test_RB_REVERSE_RMV_7(){
                N  N
 ****************************************** */
 void test_RB_REVERSE_RMV_8(){
-    puts("\n--------------------test_RB_REVERSE_RMV_8--------------------\n\n");
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     struct Node *root = NULL;
 
@@ -955,25 +1008,31 @@ void test_RB_REVERSE_RMV_8(){
 
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 }
 
-
-
 /* ****************************************
-                10
+                15
               /    \
-            NIL    22
+             N     22
                   /   \
-                21   28x
+                 17    28
+                / \   /  \
+               N 19   24   38
+                 /\   /\   /\
+                18 N N  N 30  N
+                /\       /  \
+               N  N     N    N
 ****************************************** */
-void test_RIGHT_BRANCH_3(){
+void test_RB_REVERSE_RMV_9(){
+    printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
-    int res = 0;
     struct Node *root = NULL;
 
-    Insert_Element(&root, 10);
+    Insert_Element(&root, 15);
     CU_ASSERT_NOT_EQUAL(root, NULL);
-    CU_ASSERT(root->key_value == 10);
+    CU_ASSERT(root->key_value == 15);
     CU_ASSERT(root->left_branch == NULL);
     CU_ASSERT(root->right_branch == NULL);
 
@@ -983,247 +1042,111 @@ void test_RIGHT_BRANCH_3(){
     CU_ASSERT(root->right_branch->left_branch == NULL);
     CU_ASSERT(root->right_branch->right_branch == NULL);
 
-    Insert_Element(&root, 21);
+    Insert_Element(&root, 17);
     CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch-> left_branch->key_value == 21);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
-
-    Insert_Element(&root, 28);
-    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->right_branch->key_value == 28);
-    CU_ASSERT(root->right_branch->right_branch->left_branch == NULL);
-    CU_ASSERT(root->right_branch->right_branch->right_branch == NULL);
-    Remove_Node(&root, 28);
-    Reverse_Removing(&root);
-}
-
-/* ****************************************
-                10
-              /    \
-            NIL    22
-                  /   \
-                21   28x
-****************************************** */
-void test_RIGHT_BRANCH_4(){
-
-    int res = 0;
-    struct Node *root = NULL;
-
-    Insert_Element(&root, 10);
-    CU_ASSERT_NOT_EQUAL(root, NULL);
-    CU_ASSERT(root->key_value == 10);
-    CU_ASSERT(root->left_branch == NULL);
-    CU_ASSERT(root->right_branch == NULL);
-
-    Insert_Element(&root, 22);
-    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch->left_branch == NULL);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
-
-    Insert_Element(&root, 21);
-    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch-> left_branch->key_value == 21);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
-
-    Insert_Element(&root, 28);
-    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->right_branch->key_value == 28);
-    CU_ASSERT(root->right_branch->right_branch->left_branch == NULL);
-    CU_ASSERT(root->right_branch->right_branch->right_branch == NULL);
-    Remove_Node(&root, 21);
-    Reverse_Removing(&root);
-}
-
-/* ****************************************
-                10
-              /    \
-            NIL    22
-                  /   \
-                21   28x
-****************************************** */
-void test_RIGHT_BRANCH_5(){
-
-    int res = 0;
-    struct Node *root = NULL;
-
-    Insert_Element(&root, 10);
-    CU_ASSERT_NOT_EQUAL(root, NULL);
-    CU_ASSERT(root->key_value == 10);
-    CU_ASSERT(root->left_branch == NULL);
-    CU_ASSERT(root->right_branch == NULL);
-
-    Insert_Element(&root, 22);
-    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch->left_branch == NULL);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
-
-    Insert_Element(&root, 21);
-    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch-> left_branch->key_value == 21);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->key_value == 17);
+    CU_ASSERT(root->right_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch == NULL);
 
     Insert_Element(&root, 19);
+    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->key_value == 19);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->right_branch == NULL);
+
+    Insert_Element(&root, 18);
+    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->left_branch->key_value == 18);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->left_branch->right_branch->left_branch->right_branch == NULL);
+
 
     Insert_Element(&root, 28);
     CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
     CU_ASSERT(root->right_branch->right_branch->key_value == 28);
     CU_ASSERT(root->right_branch->right_branch->left_branch == NULL);
     CU_ASSERT(root->right_branch->right_branch->right_branch == NULL);
-    Remove_Node(&root, 28);
-    Reverse_Removing(&root);
-}
 
-/* ****************************************
-                10
-              /    \
-            NIL    22
-                  /   \
-                20x    28
-                /
-              19
-****************************************** */
-void test_RIGHT_BRANCH_6(){
-
-    int res = 0;
-    struct Node *root = NULL;
-
-    Insert_Element(&root, 10);
-    CU_ASSERT_NOT_EQUAL(root, NULL);
-    CU_ASSERT(root->key_value == 10);
-    CU_ASSERT(root->left_branch == NULL);
-    CU_ASSERT(root->right_branch == NULL);
-
-    Insert_Element(&root, 22);
+    Insert_Element(&root, 24);
     CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch->left_branch == NULL);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->left_branch->key_value == 24);
+    CU_ASSERT(root->right_branch->right_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->left_branch->right_branch == NULL);
 
-    Insert_Element(&root, 20);
+    Insert_Element(&root, 38);
     CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch-> left_branch->key_value == 20);
-    CU_ASSERT(root->right_branch->right_branch == NULL);
-    Insert_Element(&root, 19);
-    Insert_Element(&root, 28);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    printf("RIGHT LEFT %d\n",root->right_branch->left_branch->key_value );
-    CU_ASSERT(root->right_branch->left_branch->left_branch->key_value == 19);
-    CU_ASSERT(root->right_branch->right_branch->key_value == 28 );
+    CU_ASSERT(root->right_branch->right_branch->right_branch->key_value == 38);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->right_branch == NULL);
 
-    Insert_Element(&root, 29);
-    Remove_Node(&root, 20);
-    CU_ASSERT(root->right_branch->key_value == 22);
-    CU_ASSERT(root->right_branch->left_branch->key_value == 19);
-    CU_ASSERT(root->right_branch->right_branch->key_value == 28 );
-    Reverse_Removing(&root);
-}
+    Insert_Element(&root, 30);
+    CU_ASSERT_NOT_EQUAL(root->right_branch, NULL);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->left_branch->key_value == 30);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->right_branch->right_branch->right_branch->left_branch->right_branch == NULL);
 
-
-//void test_Remove_Node_1(){
-
-
-/* ****************************************
-                10
-              /    \
-            7        18
-          /   \    /    \
-         5     8  17     19
-       /   \   \           \
-      3     6   9           21
-                           /
-                          20
-****************************************** */
-void test_Remove_Node_1(){
-    struct Node *root = NULL;
-    printf("\nSTARTTTTttttttttttttttTTTTTTTT \n%p\n", root);
-    Insert_Element(&root, 10);
-    Insert_Element(&root, 7);
-    Insert_Element(&root, 8);
-    Insert_Element(&root, 5);
-    Insert_Element(&root, 3);
-    Insert_Element(&root, 6);
-    Insert_Element(&root, 8);
-    Insert_Element(&root, 9);
-    Remove_Node(&root, 7);
-    Remove_Node(&root, 5);
-    //CU_ASSERT(root->left_branch->key_value == 5);
-    //CU_ASSERT(root->left_branch->left_branch->key_value == 3);
     root = Reverse_Removing(&root);
-    //printf("\n\n\n%d\n\n\n", root->key_value);
-    printf("\n\n\n%p\n\n\n", root);
     CU_ASSERT(root == NULL);
 
+    puts(end_mark);
 }
 
+
+
 int Return_One(){ return 1; }
-int Return_Two(){ return 2; }
+
 
 void test_Return_One(){ CU_ASSERT(Return_One()== 1); }
 
 int main(){
 
-    CU_pSuite pSuite = NULL;
+    CU_pSuite pSuite_1 = NULL, pSuite_2 = NULL;
 
     /* Initialize CUnit test registry */
     if (CUE_SUCCESS != CU_initialize_registry())
         return CU_get_error();
 
     /* Add suite to registry */
-    pSuite = CU_add_suite("Basic_Test_Suite", init_suite, clean_suite);
-    if (NULL == pSuite) {
+    pSuite_1 = CU_add_suite("Test_Suite_Revers_Removing", init_suite, clean_suite);
+    if (NULL == pSuite_1) {
+        CU_cleanup_registry();
+        return CU_get_error();
+    }
+
+    pSuite_2 = CU_add_suite("Test_Suite_Remove_Node", init_suite, clean_suite);
+    if (NULL == pSuite_2) {
         CU_cleanup_registry();
         return CU_get_error();
     }
 
     /* add tests to suite */
-
-    //if{
-
     if(
-        /* testing left branch */
-        (NULL == CU_add_test(pSuite, "test_Tree_One_Node", test_Tree_One_Node)) ||
-        (NULL == CU_add_test(pSuite, "test_Empty_Tree_Removing_Elements", test_Empty_Tree_Removing_Elements)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_1", test_LB_REVERSE_RMV_1)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_2", test_LB_REVERSE_RMV_2)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_3", test_LB_REVERSE_RMV_3)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_4", test_LB_REVERSE_RMV_4)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_5", test_LB_REVERSE_RMV_5)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_6", test_LB_REVERSE_RMV_6)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_7", test_LB_REVERSE_RMV_7)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_8", test_LB_REVERSE_RMV_8)) ||
-        (NULL == CU_add_test(pSuite, "test_LB_REVERSE_RMV_9", test_LB_REVERSE_RMV_9)) ||
-        /* testing right branch */
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_1", test_RB_REVERSE_RMV_1)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_2", test_RB_REVERSE_RMV_2)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_3", test_RB_REVERSE_RMV_3)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_4", test_RB_REVERSE_RMV_4)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_5", test_RB_REVERSE_RMV_5)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_6", test_RB_REVERSE_RMV_6)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_7", test_RB_REVERSE_RMV_7)) ||
-        (NULL == CU_add_test(pSuite, "test_RB_REVERSE_RMV_8", test_RB_REVERSE_RMV_8))
-    ){
+        /* testing reverse removing on left branch of tree*/
+        (NULL == CU_add_test(pSuite_1, "test_Tree_One_Node", test_Tree_One_Node)) ||
+        (NULL == CU_add_test(pSuite_1, "test_Empty_Tree_Removing_Elements", test_Empty_Tree_Removing_Elements)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_1", test_LB_REVERSE_RMV_1)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_2", test_LB_REVERSE_RMV_2)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_3", test_LB_REVERSE_RMV_3)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_4", test_LB_REVERSE_RMV_4)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_5", test_LB_REVERSE_RMV_5)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_6", test_LB_REVERSE_RMV_6)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_7", test_LB_REVERSE_RMV_7)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_8", test_LB_REVERSE_RMV_8)) ||
+        (NULL == CU_add_test(pSuite_1, "test_LB_REVERSE_RMV_9", test_LB_REVERSE_RMV_9)) ||
+        /* testing reverse removing on right branch of tree */
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_1", test_RB_REVERSE_RMV_1)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_2", test_RB_REVERSE_RMV_2)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_3", test_RB_REVERSE_RMV_3)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_4", test_RB_REVERSE_RMV_4)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_5", test_RB_REVERSE_RMV_5)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_6", test_RB_REVERSE_RMV_6)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_7", test_RB_REVERSE_RMV_7)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_8", test_RB_REVERSE_RMV_8)) ||
+        (NULL == CU_add_test(pSuite_1, "test_RB_REVERSE_RMV_9", test_RB_REVERSE_RMV_9))
 
-    //test_RB_REVERSE_RMV_1
-//    if(NULL == CU_add_test(pSuite, "test_LEFT_BRANCH_1", test_LEFT_BRANCH_1)){
-//    if(NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_1", test_RIGHT_BRANCH_1)){
-        //if(NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_2", test_RIGHT_BRANCH_2)){
-  /*
-test_LB_REVERSE_RMV_4
-  test_LB_REVERSE_RMV_1
-        (NULL == CU_add_test(pSuite, "test_LEFT_BRANCH_1", test_LEFT_BRANCH_1)) ||
-        (NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_1", test_RIGHT_BRANCH_1)) ||
-        (NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_2", test_RIGHT_BRANCH_2)) ||
-        (NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_3", test_RIGHT_BRANCH_3)) ||
-        (NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_4", test_RIGHT_BRANCH_4)) ||
-        (NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_5", test_RIGHT_BRANCH_5)) ||
-        (NULL == CU_add_test(pSuite, "test_RIGHT_BRANCH_6", test_RIGHT_BRANCH_6)))
-*/
+        /* testind removing of particular node of tree*/
+    )
+    {
         CU_cleanup_registry();
         return CU_get_error();
     }
