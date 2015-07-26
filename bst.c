@@ -122,7 +122,7 @@ int Remove_Node(struct Node **root, int key_id)
     if ((*root) == NULL) return -1;
 
     printf("\t\t\t\t\tREMOVE NODE :  ");
-    struct Node *start_node = NULL, *child = NULL, *root_right = NULL, *root_left = NULL, *last_right = NULL, *last_left = NULL;
+    struct Node *start_node = NULL, *child = NULL, *root_right = NULL, *root_left = NULL, *rooot = NULL, *last_right = NULL, *last_left = NULL;
     start_node = Find_Node_by_ID(&(*root), key_id);
 
     /* element was not found on tree */
@@ -225,7 +225,23 @@ int Remove_Node(struct Node **root, int key_id)
                 free(start_node);
 
         }else {
-           printf("RR: RIGHT != NULL\n");
+            printf("RR: RIGHT != NULL\n");
+            int val = start_node->key_value;
+            rooot = start_node->left_branch;
+            root_right = start_node->right_branch;
+            last_right = Get_Last_Right_Node(&rooot);
+            if(rooot->parent->left_branch->key_value = val){
+                printf("RR: ROOOT LEFT\n");
+
+                start_node->parent->left_branch = rooot;
+                rooot->parent = start_node->parent;
+                last_right->right_branch = start_node->right_branch;
+
+                start_node->right_branch->parent = last_right;
+                free(start_node);
+            }else{
+                printf("RR: ROOOT RIGHT\n");
+            }
 
 
         }

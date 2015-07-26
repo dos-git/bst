@@ -1511,6 +1511,67 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     CU_ASSERT(root == NULL);
 
     puts(end_mark);
+}
+
+/* ****************************************
+                16
+              /    \
+            8       N
+           / \
+          4   12
+         / \  / \
+        2   5 N  N
+        /\ /\
+       N N N N
+****************************************** */
+void test_LB_REMOVE_NODE_8(){
+printf("\n%s%s%s\n", lines_20, __func__, lines_20);
+
+    int res = 0;
+    struct Node *root = NULL;
+    Insert_Element(&root, 16);
+    CU_ASSERT_NOT_EQUAL(root, NULL);
+    CU_ASSERT(root->key_value == 16);
+    CU_ASSERT(root->left_branch == NULL);
+    CU_ASSERT(root->right_branch == NULL);
+
+    Insert_Element(&root, 8);
+    CU_ASSERT(root->left_branch->key_value == 8);
+    CU_ASSERT(root->left_branch->left_branch == NULL);
+    CU_ASSERT(root->left_branch->right_branch == NULL);
+
+    Insert_Element(&root, 12);
+    CU_ASSERT(root->left_branch->right_branch->key_value == 12);
+    CU_ASSERT(root->left_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->left_branch->right_branch->right_branch == NULL);
+
+    Insert_Element(&root, 4);
+    CU_ASSERT(root->left_branch->left_branch->key_value == 4);
+    CU_ASSERT(root->left_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->left_branch->left_branch->right_branch == NULL);
+
+    Insert_Element(&root, 2);
+    CU_ASSERT(root->left_branch->left_branch->left_branch->key_value == 2);
+    CU_ASSERT(root->left_branch->left_branch->left_branch->left_branch == NULL);
+    CU_ASSERT(root->left_branch->left_branch->left_branch->right_branch == NULL);
+
+    Insert_Element(&root, 5);
+    CU_ASSERT(root->left_branch->left_branch->right_branch->key_value == 5);
+    CU_ASSERT(root->left_branch->left_branch->right_branch->left_branch == NULL);
+    CU_ASSERT(root->left_branch->left_branch->right_branch->right_branch == NULL);
+
+
+    res = Remove_Node(&root, 8);
+    printf("RRRRRRRRRRRRR %d\n",root->left_branch->key_value );
+    CU_ASSERT(root->left_branch->key_value == 4);
+    CU_ASSERT(root->left_branch->left_branch != NULL);
+    CU_ASSERT(root->left_branch->right_branch != NULL);
+
+
+    root = Reverse_Removing(&root);
+    CU_ASSERT(root == NULL);
+
+    puts(end_mark);
 
 }
 
@@ -1732,6 +1793,7 @@ int main(){
         (NULL == CU_add_test(pSuite_2, "test_LB_REMOVE_NODE_5", test_LB_REMOVE_NODE_5)) ||
         (NULL == CU_add_test(pSuite_2, "test_LB_REMOVE_NODE_6", test_LB_REMOVE_NODE_6)) ||
         (NULL == CU_add_test(pSuite_2, "test_LB_REMOVE_NODE_7", test_LB_REMOVE_NODE_7)) ||
+        (NULL == CU_add_test(pSuite_2, "test_LB_REMOVE_NODE_8", test_LB_REMOVE_NODE_8)) ||
 
         (NULL == CU_add_test(pSuite_2, "test_RB_REMOVE_NODE_7", test_RB_REMOVE_NODE_7)) ||
         (NULL == CU_add_test(pSuite_2, "test_RB_REMOVE_NODE_8", test_RB_REMOVE_NODE_8)) ||
