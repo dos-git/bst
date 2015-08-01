@@ -223,9 +223,10 @@ int Remove_Node(struct Node **root, int key_id)
 
 
     }else{
-    /* Left branch is not empty */
+
         printf("RR: LEFT != NULL\n");
         if(start_node->right_branch == NULL){
+        /* Left branch is not empty, right branch is empty */
             printf("RR: RIGHT == NULL\n");
             root_left = start_node->left_branch;
             if(start_node->parent->left_branch != NULL){
@@ -235,16 +236,16 @@ int Remove_Node(struct Node **root, int key_id)
             else{
                 printf("HHHHHHHHHHHHHHHHHHHHHHHHH 222222222222222\n");  // TODO remove..........
                 start_node->parent->right_branch = root_left;
-                }
-                root_left->parent = start_node->parent;
-                start_node->parent = NULL;
+            }
+            root_left->parent = start_node->parent;
+            start_node->parent = NULL;
 
-                printf("RR: FREED %d\n", start_node->key_value);
-                free(start_node);
-                return 0;
+            printf("RR: FREED %d\n", start_node->key_value);
+            free(start_node);
+            return 0;
 
         }else {
-        /* Right branch is not empty */
+        /* Left branch is not empty, Right branch is not empty */
             printf("RR: RIGHT != NULL\n");
             int start_val = start_node->key_value;
             printf("START_VAL %d\n", start_node->key_value);
@@ -282,6 +283,32 @@ int Remove_Node(struct Node **root, int key_id)
                     last_right->right_branch = root_right;
                     root_right->parent = last_right;
                     //start_node->parent = NULL;
+                    free(start_node);
+                    return 0;
+                }else{ //TODO add case for
+                    printf("DUPPPPPPPPPPPAAAAAAAAAAAAA\n");
+                    /* Parent's node refers to the right branch */
+                    printf("ROOT_RIGHT\n");
+
+                    printf("ROOOT %d\n", rooot->key_value);
+                    printf("ROOT_LEFT %d\n", root_left->key_value);
+                    printf("ROOT_RIGHT %d\n", root_right->key_value);
+
+                    printf("START->PARENT->RIGHT_BRANCH %d\n", start_node->parent->right_branch->key_value);
+                    rooot->right_branch = root_left;
+                    root_left->parent = rooot;
+                    //root_right->parent = rooot;
+
+
+                    printf("ROOT_RIGHT PARENT %d\n", root_right->parent->key_value);
+                    printf("START PARENT      %d\n", start_node->parent->key_value);
+
+                    last_right = Get_Last_Right_Node(&root_left);
+                    printf("LAST_RIGHT %d\n", last_right->key_value);
+
+                    last_right->right_branch = root_right;
+                    root_right->parent = last_right;
+
                     free(start_node);
                     return 0;
                 }
