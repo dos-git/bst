@@ -48,7 +48,7 @@ void test_Empty_Tree_Removing_Elements(){
     CU_ASSERT(root == NULL);
     CU_ASSERT(res == -1);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -93,7 +93,7 @@ void test_Tree_One_Node(){
     CU_ASSERT(res == 0);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -123,7 +123,7 @@ void test_LB_REVERSE_RMV_1(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -161,7 +161,7 @@ void test_LB_REVERSE_RMV_2(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -207,7 +207,7 @@ void test_LB_REVERSE_RMV_3(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -259,7 +259,7 @@ void test_LB_REVERSE_RMV_4(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -317,7 +317,7 @@ void test_LB_REVERSE_RMV_5(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -381,7 +381,7 @@ void test_LB_REVERSE_RMV_6(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -445,7 +445,7 @@ void test_LB_REVERSE_RMV_7(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -509,7 +509,7 @@ void test_LB_REVERSE_RMV_8(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -581,7 +581,7 @@ void test_LB_REVERSE_RMV_9(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 
@@ -612,7 +612,7 @@ void test_RB_REVERSE_RMV_1(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -650,7 +650,7 @@ void test_RB_REVERSE_RMV_2(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -696,7 +696,7 @@ void test_RB_REVERSE_RMV_3(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -748,7 +748,7 @@ void test_RB_REVERSE_RMV_4(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -807,7 +807,7 @@ void test_RB_REVERSE_RMV_5(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -871,7 +871,7 @@ void test_RB_REVERSE_RMV_6(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -935,7 +935,7 @@ void test_RB_REVERSE_RMV_7(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1008,7 +1008,7 @@ void test_RB_REVERSE_RMV_8(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1087,7 +1087,7 @@ void test_RB_REVERSE_RMV_9(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 
@@ -1109,7 +1109,7 @@ void test_Empty_Tree_Remove_Node(){
     CU_ASSERT(root == NULL);
     CU_ASSERT(res == -1);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1145,7 +1145,7 @@ void test_Tree_One_Node_Remove(){
     CU_ASSERT(res == 0);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1178,7 +1178,7 @@ void test_LB_REMOVE_NODE_1(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1221,7 +1221,7 @@ void test_LB_REMOVE_NODE_2(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1272,7 +1272,7 @@ void test_LB_REMOVE_NODE_3(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1330,7 +1330,7 @@ void test_LB_REMOVE_NODE_4(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1398,7 +1398,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1453,7 +1453,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 
 }
 
@@ -1510,7 +1510,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1562,8 +1562,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
 
     res = Remove_Node(&root, 8);
-    printf("RRRRRRRRRRRRR %d\n",root->key_value );
-    printf("RRRRRRRRRRRRR %d\n",root->left_branch->key_value );
+
   //  CU_ASSERT(root->left_branch->key_value == 4);
     //CU_ASSERT(root->left_branch->left_branch != NULL);
     //CU_ASSERT(root->left_branch->right_branch != NULL);
@@ -1572,7 +1571,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 
 }
 
@@ -1628,7 +1627,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1691,9 +1690,6 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     res = Remove_Node(&root, 32);
     CU_ASSERT(res == 0);
-    printf("yyyyyyyyyyyyyyy %d\n", root->key_value);
-    printf("yyyyyyyyyyyyyyy %d\n", root->right_branch->key_value);
-    printf("yyyyyyyyyyyyyyy %d\n", root->right_branch->right_branch->key_value);
     CU_ASSERT(root->right_branch->key_value == 24);
     CU_ASSERT(root->right_branch->left_branch != NULL);
     CU_ASSERT(root->right_branch->right_branch != NULL);
@@ -1701,7 +1697,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1768,9 +1764,6 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
 
     res = Remove_Node(&root, 32);
     CU_ASSERT(res == 0);
-    printf("yyyyyyyyyyyyyyy %d\n", root->key_value);
-    printf("yyyyyyyyyyyyyyy %d\n", root->right_branch->key_value);
-    printf("yyyyyyyyyyyyyyy %d\n", root->right_branch->right_branch->key_value);
     CU_ASSERT(root->right_branch->key_value == 24);
     CU_ASSERT(root->right_branch->left_branch != NULL);
     CU_ASSERT(root->right_branch->right_branch != NULL);
@@ -1778,7 +1771,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 /* ****************************************
@@ -1833,7 +1826,7 @@ printf("\n%s%s%s\n", lines_20, __func__, lines_20);
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 
@@ -1867,7 +1860,7 @@ void test_RB_REMOVE_NODE_1(){
     root = Reverse_Removing(&root);
     CU_ASSERT(root == NULL);
 
-    puts(end_mark);
+
 }
 
 
