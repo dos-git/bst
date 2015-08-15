@@ -9,11 +9,16 @@ struct Node
     struct Node *parent;
 };
 
-void Insert_Element(struct Node **, int id_value);
-struct Node *Create_Element(int value);
-struct Node *Reverse_Removing(struct Node **root);
-struct Node *Get_Last_Left_Node(struct Node **root);
-struct Node *Get_Last_Right_Node(struct Node **root);
+struct Node *Create_Element(int);
+void Insert_Element(struct Node **, int);
+void Return_Node(struct Node **, int, int);
+void Insert_Element(struct Node **, int);
+int Check_Branches_for_Nodes(struct Node *);
+struct Node *Find_Node_by_ID(struct Node **, int);
+struct Node *Reverse_Removing(struct Node **);
+struct Node *Get_Last_Left_Node(struct Node **);
+struct Node *Get_Last_Right_Node(struct Node **);
+int Remove_Node(struct Node **, int);
 
 int Return_one();
 #endif

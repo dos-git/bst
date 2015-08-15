@@ -13,15 +13,7 @@ struct Node *Create_Element(int value)
     return new_element;
 }
 
-int Compare_Keys(struct Node *element, int id_value)
-{
-    if (element == NULL){
-        return -2;
-    }
-    if (element->key_value == id_value) return 0;
-    else if (element->key_value > id_value)return -1;
-    else return 1;
-}
+
 
 //struct Node *Return_Node(struct Node **root, int val, int key_val){
 void Return_Node(struct Node **root, int comparision_state, int new_key_val){
@@ -70,6 +62,16 @@ void Insert_Element(struct Node **root, int id_value)
             printf("ALREADY EXIISTS\n\n");
         }
     }
+}
+
+int Compare_Keys(struct Node *element, int id_value)
+{
+    if (element == NULL){
+        return -2;
+    }
+    if (element->key_value == id_value) return 0;
+    else if (element->key_value > id_value)return -1;
+    else return 1;
 }
 
 /*
@@ -178,6 +180,7 @@ int Remove_Node(struct Node **root, int key_id)
             start_node->left_branch = NULL;
             start_node->right_branch = NULL;
             free(start_node);
+            return 0;
         }
     }else{
         if(start_node->right_branch == NULL){
@@ -311,36 +314,3 @@ struct Node *Get_Last_Left_Node(struct Node **root){
     if((*root)->left_branch != NULL) return Get_Last_Left_Node(&(*root)->left_branch);
     else return (*root);
 }
-
-void PP(struct Node **node)
-{
-    if((*node) != NULL){
-        printf("AFTERR PARENT %p %d", (*node), (*node)->key_value);
-        if((*node)->left_branch != NULL){
-             printf(" LEFT  %p %d ", (*node)->left_branch,(*node)->left_branch->key_value);
-        }else printf(" LEFT  %p", (*node)->left_branch);
-
-        if((*node)->right_branch != NULL){
-             printf(" RIGHT %p %d ", (*node)->right_branch,(*node)->right_branch->key_value);
-        }else printf(" RIGHT %p", (*node)->right_branch);
-
-    }else printf("PARENT NULL\n");
-    printf("\n");
-
-}
-
-
-void PRINT_ROOT_AND_PARENT(struct Node **root){
-
-    if((*root) == NULL){
-        printf("\nROOT IS NULLLLLLLLLL\n");
-    }else{
-        printf("ROOT    %p  %d", (*root), (*root)->key_value);
-        if((*root)->parent == NULL){
-            printf("\nPARENT IS NULLLLLLLLLL\n");
-        }else{
-            printf("\nPARENT  %p  %d\n", (*root)->parent, (*root)->parent->key_value);
-        }
-    }
-}
-
