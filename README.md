@@ -6,5 +6,5 @@ With this project I have realized a data structure storing elements in the form 
 bst project handles:
 - addition of new elements
 - removal of single element
-- removal of whole branch starting for the specified element
+- removal of whole branch starting from the specified element
  
